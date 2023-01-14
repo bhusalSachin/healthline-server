@@ -1,0 +1,24 @@
+{
+  "name": "healthline-server",
+  "version": "1.0.0",
+  "description": "Server code of the healthline app (minor project)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhusalSachin/healthline-server.git"
+  },
+  "author": "HEALTHLINE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhusalSachin/healthline-server/issues"
+  },
+  "homepage": "https://github.com/bhusalSachin/healthline-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
