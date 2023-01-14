@@ -13,9 +13,9 @@ dotenv.config();
 //connecting to the mongodb
 require("./models/db");
 
-app.get("/", (req, res) => {
-  return res.send("welcome to the healthline");
-});
+//using all the apis/routes
+const router = require("./routes");
+app.use(router);
 
 app.listen(process.env.PORT, () => {
   console.log("listening to the port 8000");
