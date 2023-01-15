@@ -40,6 +40,7 @@ exports.getAllHospitals = async (req, res) => {
 };
 
 //now we need a function to get the hospital for specific _id
+//must check the validity of the _id as objectId
 exports.getHospitalById = async (req, res) => {
   const hospitalId = req.body.hospitalId;
 
