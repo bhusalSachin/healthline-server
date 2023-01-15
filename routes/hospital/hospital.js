@@ -4,11 +4,13 @@ const express = require("express");
 const {
   createHospital,
   getAllHospitals,
+  getHospitalById,
 } = require("../../controllers/hospital");
 const router = express.Router();
 
 // hospital creating api
 router.post("/hospital/createhospital", createHospital);
-router.get("/hospital/getallhospitals", getAllHospitals);
+router.post("/hospital/getallhospitals", getAllHospitals);
+router.post("/hospital/gethospitalbyid", getHospitalById);
 
 module.exports = router;
