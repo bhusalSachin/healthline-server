@@ -1,14 +1,10 @@
 const mongoose = require("mongoose");
+const { DepartmentSchema } = require("./department");
 
 const HospitalSchema = new mongoose.Schema({
   name: String,
   address: String,
-  departments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Department",
-    },
-  ],
+  departments: [DepartmentSchema],
 });
 
 const Hospital = mongoose.model("Hospital", HospitalSchema);

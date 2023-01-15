@@ -3,6 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const hospitalRouter = require("./hospital/hospital");
+const departmentRouter = require("./hospital/department");
 
 // simple get request
 router.get("/", (req, res) => {
@@ -11,5 +12,6 @@ router.get("/", (req, res) => {
 
 //using the hospital routes just created
 router.use(hospitalRouter);
+router.use(departmentRouter);
 
 module.exports = router;
