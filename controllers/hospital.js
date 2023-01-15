@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Hospital = require("../models/hospital");
 
 //this function will be used to create the new hospital
@@ -35,5 +36,29 @@ exports.getAllHospitals = async (req, res) => {
   return res.send({
     success: true,
     message: hospitals,
+  });
+};
+
+//now we need a function to get the hospital for specific _id
+exports.getHospitalById = async (req, res) => {
+  const hospitalId = req.body.hospitalId;
+
+  if (!mongoose.Types.ObjectId.isValid(hospitalId))
+    return res.send({
+      success: false,
+      message: "Hospital id is not valid.",
+    });
+
+  const hospital = await Hospital.findById({ _id: hospitalId });
+
+  if (!hospital)
+    return res.send({
+      success: false,
+      message: "Hospital with the given id is not found in the database!",
+    });
+
+  return res.send({
+    success: true,
+    message: hospital,
   });
 };
