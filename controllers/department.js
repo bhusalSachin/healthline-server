@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Department } = require("../models/department");
 const Hospital = require("../models/hospital");
+const { Message } = require("../msc/Message");
 
 //we need to link the department to one specific hospital
 //as we already set department as a field in the hospital model
@@ -15,10 +16,7 @@ exports.createDepartment = async (req, res) => {
     !mongoose.Types.ObjectId.isValid(departmentObj.hospitalId) ||
     !departmentObj.hospitalId
   ) {
-    return res.send({
-      success: false,
-      message: "Got invalid hospital id !!",
-    });
+    return res.send(Message("Got invalid hospital id !!"));
   }
 
   //   finding the hospital
@@ -29,19 +27,12 @@ exports.createDepartment = async (req, res) => {
   });
 
   if (isDepartmentExist) {
-    return res.send({
-      success: false,
-      message: "department already exists",
-    });
+    return res.send(Message("department already exists"));
   }
   //saving the department
   const department = new Department({ name, description });
   await department.save((err) => {
-    if (err)
-      return res.send({
-        success: false,
-        message: "Got error while saving the department!",
-      });
+    if (err) return res.send(Message("Got error while saving the department"));
   });
 
   //adding the department to the hospital
@@ -52,18 +43,16 @@ exports.createDepartment = async (req, res) => {
   );
 
   if (!hospital) {
-    return res.send({
-      success: false,
-      message: "hospital doesnot exist with the given id",
-    });
+    return res.send(Message("hospital doesnot exist with the given id"));
   }
 
-  return res.send({
-    success: true,
-    message:
+  return res.send(
+    Message(
       name +
-      " department is added successfully to the " +
-      hospital.name +
-      " hospital",
-  });
+        " department is added successfully to the " +
+        hospital.name +
+        " hospital",
+      true
+    )
+  );
 };
