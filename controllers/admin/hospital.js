@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const Hospital = require("../models/hospital");
-const { Message } = require("../msc/Message");
+const Hospital = require("../../models/hospital");
+const { Message } = require("../../msc/Message");
 
 //this function will be used to create the new hospital
 //if there exists no hospital of the same name

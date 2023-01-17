@@ -1,8 +1,8 @@
-const { Doctor } = require("../models/doctor");
-const Hospital = require("../models/hospital");
+const { Doctor } = require("../../models/doctor");
+const Hospital = require("../../models/hospital");
 const mongoose = require("mongoose");
-const { Department } = require("../models/department");
-const { Message } = require("../msc/Message");
+const { Department } = require("../../models/department");
+const { Message } = require("../../msc/Message");
 //this function will be used to create a new doctor
 //we also have to push the doctor to the specific department
 //of specific hospital

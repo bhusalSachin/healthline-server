@@ -1,5 +1,5 @@
 const express = require("express");
-const { createDepartment } = require("../../controllers/department");
+const { createDepartment } = require("../../controllers/admin/department");
 const router = express.Router();
 
 //this will deal all the api routes related to the department section

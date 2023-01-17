@@ -1,5 +1,5 @@
 const express = require("express");
-const { createDoctor } = require("../../controllers/doctor");
+const { createDoctor } = require("../../controllers/admin/doctor");
 
 const router = express.Router();
 

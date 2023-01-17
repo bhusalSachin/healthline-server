@@ -5,7 +5,7 @@ const {
   createHospital,
   getAllHospitals,
   getHospitalById,
-} = require("../../controllers/hospital");
+} = require("../../controllers/admin/hospital");
 const router = express.Router();
 
 // hospital creating api

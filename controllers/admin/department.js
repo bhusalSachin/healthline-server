@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { Department } = require("../models/department");
-const Hospital = require("../models/hospital");
-const { Message } = require("../msc/Message");
+const { Department } = require("../../models/department");
+const Hospital = require("../../models/hospital");
+const { Message } = require("../../msc/Message");
 
 //we need to link the department to one specific hospital
 //as we already set department as a field in the hospital model
