@@ -4,9 +4,18 @@
 const express = require("express");
 const { loginUser } = require("../../controllers/user/loginUser");
 const { registerUser } = require("../../controllers/user/registerUser");
+const {
+  validateRegisterForm,
+  checkValidationResult,
+} = require("../../middlewares/validateRegisterForm");
 const router = express.Router();
 
-router.post("/user/register", registerUser);
+router.post(
+  "/user/register",
+  validateRegisterForm,
+  checkValidationResult,
+  registerUser
+);
 router.post("/user/login", loginUser);
 
 module.exports = router;
