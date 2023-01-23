@@ -56,3 +56,39 @@ exports.createDepartment = async (req, res) => {
     )
   );
 };
+
+//if we need alll the departments of certain hospital
+//then will be using this function
+//need hospital_id anyway
+exports.getAllDepartments = async (req, res) => {
+  const { hospitalId } = req.body;
+
+  //checking for the validity of hospitalId
+  if (!mongoose.Types.ObjectId.isValid(hospitalId) || !hospitalId) {
+    return res.send(Message("Got invalid hospital id !!"));
+  }
+
+  try {
+    const allDepartments = await Hospital.aggregate([
+      { $match: { _id: mongoose.Types.ObjectId(hospitalId) } },
+      { $project: { _id: 0, departments: 1 } },
+      { $unwind: "$departments" },
+      {
+        $project: {
+          "departments._id": 0,
+          // "departments.name": 1,
+          // "departments.description": 1,
+          "departments.doctors._id": 0,
+          "departments.doctors.__v": 0,
+        },
+      },
+    ]);
+    // const allDepartments = await Hospital.find({ _id: hospitalId });
+    if (!allDepartments)
+      return res.send(Message("Sorry! Hospital not found with the given id!"));
+
+    return res.send(Message(allDepartments, true));
+  } catch (err) {
+    return res.send(Message("Unknwon error"));
+  }
+};
