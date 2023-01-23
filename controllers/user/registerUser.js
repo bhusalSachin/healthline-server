@@ -4,7 +4,7 @@ const { Message } = require("../../msc/Message");
 //user register function wil be put here
 exports.registerUser = async (req, res) => {
   const { name, email, phone, password } = req.body;
-
+  console.log("Got to register user, ", { name, email, phone, password });
   //have to save the information in the database
   //lets first check if the user already exists(email based)
   const isUser = await User.findOne({ email });

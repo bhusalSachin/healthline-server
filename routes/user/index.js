@@ -7,6 +7,7 @@ const { registerUser } = require("../../controllers/user/registerUser");
 const {
   validateRegisterForm,
   checkValidationResult,
+  validateLoginForm,
 } = require("../../middlewares/validateRegisterForm");
 const router = express.Router();
 
@@ -16,6 +17,6 @@ router.post(
   checkValidationResult,
   registerUser
 );
-router.post("/user/login", loginUser);
+router.post("/user/login", validateLoginForm, loginUser);
 
 module.exports = router;
