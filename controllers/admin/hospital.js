@@ -35,11 +35,14 @@ exports.getAllHospitals = async (req, res) => {
 //must check the validity of the _id as objectId
 exports.getHospitalById = async (req, res) => {
   const hospitalId = req.body.hospitalId;
-
   if (!mongoose.Types.ObjectId.isValid(hospitalId))
     return res.send(Message("Hospital id is not valid."));
-
-  const hospital = await Hospital.findById({ _id: hospitalId });
+  console.log("get hospital by id = ", hospitalId);
+  // const hospital = await Hospital.findById({ _id: hospitalId });
+  const hospital = await Hospital.aggregate([
+    { $match: { _id: mongoose.Types.ObjectId(hospitalId) } },
+    { $project: { __v: 0 } },
+  ]);
 
   if (!hospital)
     return res.send(

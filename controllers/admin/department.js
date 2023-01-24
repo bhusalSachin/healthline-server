@@ -76,8 +76,6 @@ exports.getAllDepartments = async (req, res) => {
       {
         $project: {
           "departments._id": 0,
-          // "departments.name": 1,
-          // "departments.description": 1,
           "departments.doctors._id": 0,
           "departments.doctors.__v": 0,
         },
