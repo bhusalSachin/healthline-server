@@ -8,7 +8,9 @@ exports.loginAdmin = async (req, res) => {
   console.log("login admin ", username, " ", password);
   //very easy
   //extract document and check for the password lol
-  const admin = await Hospital.findOne({ username });
+  const admin = await Hospital.findOne({
+    username: username.toString().trim(),
+  });
   if (!admin)
     return res.send(
       Message("Sorry! Hospital doesn't find with the given username")
