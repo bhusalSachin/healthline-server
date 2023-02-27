@@ -1,6 +1,8 @@
 //this is where the login functionality will be made
 const { Message } = require("../../msc/Message");
 const Hospital = require("../../models/hospital");
+const jwt = require("jsonwebtoken");
+
 exports.loginAdmin = async (req, res) => {
   const { username, password } = req.body;
   console.log("login admin ", username, " ", password);
@@ -15,5 +17,10 @@ exports.loginAdmin = async (req, res) => {
 
   if (!isMatch)
     return res.send(Message("Sorry! username and password doesn't match!"));
-  return res.send(Message({ hospitalId: admin._id, token: "my_token" }, true));
+
+  //creating secret token to check for authentication
+  // const body = { _id: admin._id, name: admin.username };
+  // const token = jwt.sign({ user: body }, "TOP_SECRET");
+  const token = jwt.sign({ id: admin._id }, "TOP_SECRET");
+  return res.send(Message({ hospitalId: admin._id, token: token }, true));
 };

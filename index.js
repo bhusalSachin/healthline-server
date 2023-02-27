@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const passport = require("passport");
 const app = express();
 
 // enabling cross origin resource sharing
@@ -13,6 +14,10 @@ dotenv.config();
 //connecting to the mongodb
 require("./models/db");
 
+//passport js config
+const initializePassport = require("./middlewares/passport");
+initializePassport(passport);
+app.use(passport.initialize());
 //using all the apis/routes
 const router = require("./routes");
 app.use(router);
