@@ -61,10 +61,27 @@ exports.editHospital = async (req, res) => {
     return res.send(Message("Hospital id is not valid"));
 
   const result = await Hospital.updateOne({ _id: id }, { $set: newHospital });
-  console.log("after update result = ", result);
+  // console.log("after update result = ", result);
   if (result.modifiedCount === 1) {
     return res.send(Message("Updated Successfully!", true));
   }
 
   return res.send(Message("Update failed, try once again!"));
+};
+
+//delete a hospital by its id
+//can access only by super admin, (will do later though)
+exports.deleteHospital = async (req, res) => {
+  const { hospitalId } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(hospitalId))
+    return res.send(Message("Hospital id is not valid"));
+
+  const result = await Hospital.deleteOne({ _id: hospitalId });
+  // console.log("after delete result = ", result);
+
+  if (result.deletedCount === 1) {
+    return res.send(Message("Deleted successfully!"));
+  }
+  return res.send(Message("Delete failed, try once again"));
 };
