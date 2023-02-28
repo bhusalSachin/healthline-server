@@ -14,6 +14,7 @@ const {
 } = require("../../middlewares/authenticateHospital");
 const {
   validateHospitalAddForm,
+  checkValidationResult,
 } = require("../../middlewares/validateRegisterForm");
 const { Message } = require("../../msc/Message");
 const router = express.Router();
@@ -22,6 +23,7 @@ const router = express.Router();
 router.post(
   "/hospital/createhospital",
   validateHospitalAddForm,
+  checkValidationResult,
   createHospital
 );
 router.post("/hospital/getallhospitals", getAllHospitals);

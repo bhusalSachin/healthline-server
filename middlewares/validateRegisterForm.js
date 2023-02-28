@@ -49,7 +49,7 @@ exports.validateHospitalAddForm = [
     .withMessage("Must be a string")
     .isLength({ min: 4, max: 20 })
     .withMessage("Name must be 4 to 20 characters long!"),
-  check("addres")
+  check("address")
     .trim()
     .not()
     .isEmpty()

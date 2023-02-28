@@ -17,6 +17,6 @@ router.post(
   checkValidationResult,
   registerUser
 );
-router.post("/user/login", validateLoginForm, loginUser);
+router.post("/user/login", validateLoginForm, checkValidationResult, loginUser);
 
 module.exports = router;
