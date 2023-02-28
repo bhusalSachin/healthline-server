@@ -7,6 +7,7 @@ const {
   createHospital,
   getAllHospitals,
   getHospitalById,
+  editHospital,
 } = require("../../controllers/admin/hospital");
 const { loginAdmin } = require("../../controllers/admin/loginAdmin");
 const {
@@ -25,6 +26,12 @@ router.post(
   validateHospitalAddForm,
   checkValidationResult,
   createHospital
+);
+router.post(
+  "/hospital/edithospital",
+  // validateHospitalAddForm,
+  // checkValidationResult,
+  editHospital
 );
 router.post("/hospital/getallhospitals", getAllHospitals);
 router.post("/hospital/gethospitalbyid", getHospitalById);

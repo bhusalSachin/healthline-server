@@ -51,3 +51,20 @@ exports.getHospitalById = async (req, res) => {
     );
   return res.send(Message(hospital, true));
 };
+
+//edit hospital functionality
+//take whole new hospital set for given id
+exports.editHospital = async (req, res) => {
+  const { newHospital, id } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.send(Message("Hospital id is not valid"));
+
+  const result = await Hospital.updateOne({ _id: id }, { $set: newHospital });
+  console.log("after update result = ", result);
+  if (result.modifiedCount === 1) {
+    return res.send(Message("Updated Successfully!", true));
+  }
+
+  return res.send(Message("Update failed, try once again!"));
+};
