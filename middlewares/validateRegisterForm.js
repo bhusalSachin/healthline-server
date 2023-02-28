@@ -39,6 +39,43 @@ exports.validateRegisterForm = [
     .withMessage("Password must be 6 to 15 characters long!"),
 ];
 
+exports.validateHospitalAddForm = [
+  check("name")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Name field is empty")
+    .matches(/^[a-zA-Z]+$/)
+    .withMessage("Must be a string")
+    .isLength({ min: 4, max: 20 })
+    .withMessage("Name must be 4 to 20 characters long!"),
+  check("addres")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Name field is empty")
+    .matches(/^[a-zA-Z]+$/)
+    .withMessage("Must be a string")
+    .isLength({ min: 4, max: 20 })
+    .withMessage("Name must be 4 to 20 characters long!"),
+  check("username")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Name field is empty")
+    .matches(/^[a-zA-Z]+$/)
+    .withMessage("Must be a string")
+    .isLength({ min: 4, max: 20 })
+    .withMessage("Name must be 4 to 20 characters long!"),
+  check("password")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Password is empty")
+    .isLength({ min: 4, max: 15 })
+    .withMessage("Password must be 6 to 15 characters long!"),
+];
+
 exports.validateLoginForm = [
   check("email")
     .trim()

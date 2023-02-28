@@ -12,11 +12,18 @@ const { loginAdmin } = require("../../controllers/admin/loginAdmin");
 const {
   authenticateHospital,
 } = require("../../middlewares/authenticateHospital");
+const {
+  validateHospitalAddForm,
+} = require("../../middlewares/validateRegisterForm");
 const { Message } = require("../../msc/Message");
 const router = express.Router();
 
 // hospital creating api
-router.post("/hospital/createhospital", createHospital);
+router.post(
+  "/hospital/createhospital",
+  validateHospitalAddForm,
+  createHospital
+);
 router.post("/hospital/getallhospitals", getAllHospitals);
 router.post("/hospital/gethospitalbyid", getHospitalById);
 router.post("/hospital/login", loginAdmin);
