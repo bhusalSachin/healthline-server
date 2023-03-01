@@ -45,28 +45,28 @@ exports.validateHospitalAddForm = [
     .not()
     .isEmpty()
     .withMessage("Name field is empty")
-    .matches(/^[a-zA-Z]+$/)
-    .withMessage("Must be a string")
-    .isLength({ min: 4, max: 20 })
-    .withMessage("Name must be 4 to 20 characters long!"),
+    // .matches(/^[a-zA-Z]+$/)
+    // .withMessage("Name must be a string")
+    .isLength({ min: 4 })
+    .withMessage("Name must be at least of 4 characters"),
   check("address")
     .trim()
     .not()
     .isEmpty()
     .withMessage("Name field is empty")
-    .matches(/^[a-zA-Z]+$/)
-    .withMessage("Must be a string")
-    .isLength({ min: 4, max: 20 })
-    .withMessage("Name must be 4 to 20 characters long!"),
+    // .matches(/^[a-zA-Z]+$/)
+    // .withMessage("Address must be a string")
+    .isLength({ min: 4 })
+    .withMessage("Name must be at least of 4 characters"),
   check("username")
     .trim()
     .not()
     .isEmpty()
-    .withMessage("Name field is empty")
+    .withMessage("username field is empty")
     .matches(/^[a-zA-Z]+$/)
-    .withMessage("Must be a string")
+    .withMessage("Username must be a string")
     .isLength({ min: 4, max: 20 })
-    .withMessage("Name must be 4 to 20 characters long!"),
+    .withMessage("username must be 4 to 20 characters long!"),
   check("password")
     .trim()
     .not()
@@ -95,6 +95,7 @@ exports.validateLoginForm = [
 ];
 
 exports.checkValidationResult = (req, res, next) => {
+  // console.log("validating form = ", req.body);
   const result = validationResult(req).array();
 
   if (result.length === 0) return next();
