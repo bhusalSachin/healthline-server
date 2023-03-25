@@ -10,8 +10,8 @@ exports.validateRegisterForm = [
     .not()
     .isEmpty()
     .withMessage("Name field is empty")
-    .matches(/^[a-zA-Z]+$/)
-    .withMessage("Must be a string")
+    .isString()
+    .withMessage("Name must be a string")
     .isLength({ min: 4, max: 20 })
     .withMessage("Name must be 4 to 20 characters long!"),
   check("email")
@@ -28,6 +28,7 @@ exports.validateRegisterForm = [
     .isEmpty()
     .withMessage("Phone number is required")
     .isNumeric()
+    .withMessage("Please enter valid phone number: ")
     .isLength({ min: 10, max: 10 })
     .withMessage("Please enter valid phone number: "),
   check("password")
