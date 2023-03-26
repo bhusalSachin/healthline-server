@@ -65,6 +65,8 @@ exports.getHospitalById = async (req, res) => {
 exports.editHospital = async (req, res) => {
   const { newHospital, id } = req.body;
 
+  console.log("edit hospital ", newHospital, id);
+
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.send(Message("Hospital id is not valid"));
 
