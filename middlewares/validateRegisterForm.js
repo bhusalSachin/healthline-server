@@ -46,19 +46,25 @@ exports.validateHospitalAddForm = [
     .not()
     .isEmpty()
     .withMessage("Name field is empty")
-    // .matches(/^[a-zA-Z]+$/)
-    // .withMessage("Name must be a string")
     .isLength({ min: 4 })
     .withMessage("Name must be at least of 4 characters"),
   check("address")
     .trim()
     .not()
     .isEmpty()
-    .withMessage("Name field is empty")
-    // .matches(/^[a-zA-Z]+$/)
-    // .withMessage("Address must be a string")
+    .withMessage("Address field is empty")
     .isLength({ min: 4 })
     .withMessage("Name must be at least of 4 characters"),
+  check("latitude")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("latitude field is empty"),
+  check("longitude")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Longitude field is empty!"),
   check("username")
     .trim()
     .not()
@@ -93,6 +99,16 @@ exports.validateLoginForm = [
     .withMessage("Password is empty")
     .isLength({ min: 6, max: 15 })
     .withMessage("Password must be 6 to 15 characters long!"),
+];
+
+exports.validateDepartAddForm = [
+  check("name")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Enter department name!")
+    .isLength({ min: 4, max: 15 })
+    .withMessage("Department name must be 6 to 15 characters long!"),
 ];
 
 exports.checkValidationResult = (req, res, next) => {
