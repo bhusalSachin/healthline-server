@@ -22,6 +22,6 @@ app.use(passport.initialize());
 const router = require("./routes");
 app.use(router);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("listening to the port 8000");
 });
