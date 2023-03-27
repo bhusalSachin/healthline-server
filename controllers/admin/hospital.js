@@ -5,16 +5,8 @@ const { Message } = require("../../msc/Message");
 //this function will be used to create the new hospital
 //if there exists no hospital of the same name
 exports.createHospital = async (req, res) => {
-  const {
-    name,
-    address,
-    latitude,
-    longitude,
-    phone,
-    services,
-    username,
-    password,
-  } = req.body;
+  const { name, address, latitude, longitude, phone, username, password } =
+    req.body;
   const isHospitalExist = await Hospital.findOne({ name });
   if (isHospitalExist) {
     return res.send(Message("hospital already exist with the name " + name));
@@ -25,7 +17,6 @@ exports.createHospital = async (req, res) => {
     address,
     coordinates: { latitude, longitude },
     phone,
-    services,
     username,
     password,
   });
