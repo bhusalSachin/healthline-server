@@ -30,6 +30,7 @@ const HospitalSchema = new mongoose.Schema({
     default: false,
   },
   departments: [DepartmentSchema],
+  // services: [String],
 });
 
 const Hospital = mongoose.model("Hospital", HospitalSchema);
